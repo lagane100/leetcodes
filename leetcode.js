@@ -56,14 +56,14 @@ let leetcode15 = nums => {
 };
 
 let leetcode18 = (nums, target) => {
-    nums.sort((a,b)=>a-b);
+    nums.sort((a, b) => a - b);
     let temp = 0;
     let ans = [];
-    for(let i=0;i<nums.length;i++){
-        for(let j=i+1;j<nums.length;j++){
-            for(let k=j+1;k<nums.length;k++){
-                for(let m=k+1;m<nums.length;m++){
-                    if(nums[i]+nums[j]+nums[k]+nums[m]===target){
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            for (let k = j + 1; k < nums.length; k++) {
+                for (let m = k + 1; m < nums.length; m++) {
+                    if (nums[i] + nums[j] + nums[k] + nums[m] === target) {
                         ans[temp] = [];
                         ans[temp].push(nums[i]);
                         ans[temp].push(nums[j]);
@@ -80,24 +80,24 @@ let leetcode18 = (nums, target) => {
 
 ///以解決
 let leetcode20 = s => {
-    const open = ["(","{","["],close = [")","}","]"];
+    const open = ["(", "{", "["], close = [")", "}", "]"];
     const stack = [];
     let list = s.split("");
-    for(let i=0;i<list.length;i++){
-        if(open.findIndex(e => e===list[i]) === -1 && close.findIndex(e => e===list[i]) === -1) return false
-        if(open.findIndex(e => e===list[i]) != -1){
-            stack.push(open.findIndex(e => e===list[i]))
+    for (let i = 0; i < list.length; i++) {
+        if (open.findIndex(e => e === list[i]) === -1 && close.findIndex(e => e === list[i]) === -1) return false
+        if (open.findIndex(e => e === list[i]) != -1) {
+            stack.push(open.findIndex(e => e === list[i]))
         }
-        if(close.findIndex(e => e===list[i]) != -1){
-            if(close.findIndex(e => e===list[i])===stack.pop()){
+        if (close.findIndex(e => e === list[i]) != -1) {
+            if (close.findIndex(e => e === list[i]) === stack.pop()) {
                 continue;
             }
-            else{
+            else {
                 return false;
             }
         }
     }
-    return stack.length===0 ? true : false;
+    return stack.length === 0 ? true : false;
 }
 
 ///以解決
@@ -126,7 +126,7 @@ let leetcode66 = digits => {
 }
 
 ///待解決
-let leetcode72 = (word1,word2) => {
+let leetcode72 = (word1, word2) => {
 
 }
 
@@ -175,10 +175,10 @@ let leetcode79 = (board, word) => {
     return "end"
 }
 
-let isSameTree = (p,q) => { ///leetcode100
-    if(p.val != q.val) return false
-    if(p.val === null && q.val === null) return true;
-    return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
+let isSameTree = (p, q) => { ///leetcode100
+    if (p.val != q.val) return false
+    if (p.val === null && q.val === null) return true;
+    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
 }
 
 let leetcode107 = root => {
@@ -220,25 +220,25 @@ let leetcode107 = root => {
 
 ///以解決
 let leetcode128 = nums => {
-    if(nums.length===0) return 0;
+    if (nums.length === 0) return 0;
     const range = [];
     let ans = 0, temp = 0;
-    nums.sort((a,b) => a-b);
-    for(let i=0;i<nums.length-1;i++){
-        range.push(nums[i+1]-nums[i]);
+    nums.sort((a, b) => a - b);
+    for (let i = 0; i < nums.length - 1; i++) {
+        range.push(nums[i + 1] - nums[i]);
     }
-    for(let i=0;i<range.length;i++){
-        if(range[i]===0) continue;
-        if(range[i]===1){
+    for (let i = 0; i < range.length; i++) {
+        if (range[i] === 0) continue;
+        if (range[i] === 1) {
             temp++;
             ans = ans > temp ? ans : temp;
         }
-        else{
+        else {
             ans = ans > temp ? ans : temp;
             temp = 0;
         }
     }
-    return ans+1;
+    return ans + 1;
 }
 
 ///以解決
@@ -247,7 +247,7 @@ let leetcode136 = nums => {
     let ans = NaN;
     nums.forEach(c => map[c] = (map[c] || 0) + 1);
     Object.keys(map).forEach(e => {
-        if(map[e]===1) return ans = e;
+        if (map[e] === 1) return ans = e;
     })
     return ans;
 }
@@ -302,8 +302,8 @@ let leetcode226 = root => {
 
 ///以解決
 let leetcode258 = num => {
-    while(num>=10){
-        num = Math.floor(num/10) + num%10;
+    while (num >= 10) {
+        num = Math.floor(num / 10) + num % 10;
     }
     return num;
 }
@@ -313,11 +313,11 @@ let leetcode260 = nums => {
     let map = {};
     const ans = [];
     nums.forEach(e => map[e] = (map[e] || 0) + 1);
-    
+
     Object.keys(map).forEach(e => {
-        if(map[e]===1) ans.push(e);
+        if (map[e] === 1) ans.push(e);
     })
-    
+
     return ans;
 }
 
@@ -335,27 +335,27 @@ let leetcode283 = nums => {
     const ans = [];
     let zeroCount = 0;
     nums.forEach(e => {
-        if(e===0){
+        if (e === 0) {
             zeroCount++;
         }
-        else{
+        else {
             ans.push(e);
         }
     })
-    
-    for(let i=0;i<zeroCount;i++){
+
+    for (let i = 0; i < zeroCount; i++) {
         ans.push(0);
     }
     return ans;
 };
 
 ////待研究
-let leetcode322 = (coins,amount) => {
-    let dp = new Array(amount+1);
+let leetcode322 = (coins, amount) => {
+    let dp = new Array(amount + 1);
     dp[0] = 0;
-    for (let i=1; i<=amount; i++) {
+    for (let i = 1; i <= amount; i++) {
         dp[i] = Number.MAX_SAFE_INTEGER;
-        coins.forEach(coin => {if (i-coin >= 0) dp[i] = Math.min(dp[i], dp[i-coin]+1)});
+        coins.forEach(coin => { if (i - coin >= 0) dp[i] = Math.min(dp[i], dp[i - coin] + 1) });
     }
     return dp[amount] === Number.MAX_SAFE_INTEGER ? -1 : dp[amount];
 };
@@ -364,15 +364,15 @@ let leetcode322 = (coins,amount) => {
 let leetcode338 = num => {
     const list = [];
     const ans = [];
-    for(let i=0;i<=num;i++){
+    for (let i = 0; i <= num; i++) {
         list.push(i);
     }
 
     list.forEach(e => {
         let temp = 0;
-        while(e!=0){
-            temp += e%2;
-            e = Math.floor(e/2);
+        while (e != 0) {
+            temp += e % 2;
+            e = Math.floor(e / 2);
         }
         ans.push(temp);
     })
@@ -424,7 +424,9 @@ let leetcode354 = envelopes => {
 
 ///暫停
 let leetcode407 = heightMap => {
-    const width = heightMap.length, height = heightMap[0].length;
+
+}
+/**const width = heightMap.length, height = heightMap[0].length;
     const tempHeightMap = [];
     const Check = (i, j) => {
         return 0;
@@ -435,23 +437,22 @@ let leetcode407 = heightMap => {
             tempHeightMap[i].push(0);
         }
     }
-    return tempHeightMap;
-}
-
+    return tempHeightMap; */
+console.log(leetcode407([[1, 4, 3, 1, 3, 2], [3, 2, 1, 3, 2, 4], [2, 3, 3, 2, 3, 1]]));
 ///以解決
 let leetcode412 = n => {
     const ans = [];
-    for(let i = 1;i<=n;i++){
-        if(i%15===0){
+    for (let i = 1; i <= n; i++) {
+        if (i % 15 === 0) {
             ans.push("FizzBuzz")
         }
-        else if(i%5===0){
+        else if (i % 5 === 0) {
             ans.push("Buzz")
         }
-        else if(i%3===0){
+        else if (i % 3 === 0) {
             ans.push("Fizz")
         }
-        else{
+        else {
             ans.push(i.toString())
         }
     }
@@ -541,13 +542,13 @@ let leetcode463 = grid => {
         e.unshift(0);
         e.push(0);
     })
-    for(let i=0;i<grid.length;i++){
-        for(let j=0;j<grid[i].length;j++){
-            if(grid[i][j]===1){
-                if(grid[i-1][j]===0) ans++;
-                if(grid[i][j-1]===0) ans++;
-                if(grid[i+1][j]===0) ans++;
-                if(grid[i][j+1]===0) ans++;
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[i].length; j++) {
+            if (grid[i][j] === 1) {
+                if (grid[i - 1][j] === 0) ans++;
+                if (grid[i][j - 1] === 0) ans++;
+                if (grid[i + 1][j] === 0) ans++;
+                if (grid[i][j + 1] === 0) ans++;
             }
         }
     }
@@ -572,9 +573,9 @@ let leetcode479 = n => {
 ///time out
 let leetcode493 = nums => {
     let temp = 0;
-    for(let i=0;i<nums.length;i++){
-        for(let j=0;j<i;j++){
-            if(nums[i]>nums[j]*2) temp++;
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = 0; j < i; j++) {
+            if (nums[i] > nums[j] * 2) temp++;
         }
     }
     return temp;
@@ -583,9 +584,9 @@ let leetcode493 = nums => {
 //console.log(leetcode493([1,3,2,3,1]));
 
 let leetcode500 = words => {
-    const top = ["q","w","e","r","t","y","u","i","o","p"]
-    const mid = ["a","s","d","f","g","h","j","k","l"]
-    const bot = ["z","x","c","v","b","n","m"]
+    const top = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]
+    const mid = ["a", "s", "d", "f", "g", "h", "j", "k", "l"]
+    const bot = ["z", "x", "c", "v", "b", "n", "m"]
     const ans = [];
 
     words.forEach(e => {
@@ -593,12 +594,12 @@ let leetcode500 = words => {
         let sameTop = true;
         let sameMid = true;
         let sameBot = true;
-        for(let i=0;i<temp.length;i++){
-            sameTop &= (top.find(e => e===temp[i]) != undefined)
-            sameMid &= (mid.find(e => e===temp[i]) != undefined)
-            sameBot &= (bot.find(e => e===temp[i]) != undefined)
+        for (let i = 0; i < temp.length; i++) {
+            sameTop &= (top.find(e => e === temp[i]) != undefined)
+            sameMid &= (mid.find(e => e === temp[i]) != undefined)
+            sameBot &= (bot.find(e => e === temp[i]) != undefined)
         }
-        if(sameTop || sameMid || sameBot) ans.push(e)
+        if (sameTop || sameMid || sameBot) ans.push(e)
     })
     return ans;
 }
@@ -738,17 +739,17 @@ let leetcode643 = (nums, k) => {
 let leetcode647 = s => {
     const list = s.split("");
     let ans = 0;
-    for(let i=0;i<list.length;i++){
-        let left = i-1,right = i+1;
-        while(left >=0 && right < list.length && list[left]===list[right]){
+    for (let i = 0; i < list.length; i++) {
+        let left = i - 1, right = i + 1;
+        while (left >= 0 && right < list.length && list[left] === list[right]) {
             left--;
             right++;
             ans++;
         }
     }
-    for(let i=0;i<list.length;i++){
-        let left = i-1,right = i;
-        while(left >=0 && right < list.length && list[left]===list[right]){
+    for (let i = 0; i < list.length; i++) {
+        let left = i - 1, right = i;
+        while (left >= 0 && right < list.length && list[left] === list[right]) {
             left--;
             right++;
             ans++;
@@ -818,9 +819,9 @@ let leetcode692 = (words, k) => {
         .slice(0, k);
 }
 
-let leetcode704 = (nums,target) => {
+let leetcode704 = (nums, target) => {
     let ans = 0;
-    nums.forEach((e,i) => {if(target===e) ans = i;})
+    nums.forEach((e, i) => { if (target === e) ans = i; })
     return ans;
 }
 
@@ -908,14 +909,14 @@ let leetcode807 = grid => {
 
     grid.forEach(e => {
         LeftRight.push(Math.max(...e))
-        e.forEach((element,index) => {
+        e.forEach((element, index) => {
             TopBot[index] = TopBot[index] > element ? TopBot[index] : element;
         })
     })
 
-    for(let i=0;i<grid.length;i++){
-        for(let j=0;j<grid[0].length;j++){
-            let top = Math.min(TopBot[i],LeftRight[j]);
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[0].length; j++) {
+            let top = Math.min(TopBot[i], LeftRight[j]);
             ans += top - grid[i][j];
         }
     }
@@ -926,10 +927,10 @@ let leetcode807 = grid => {
 let leetcode821 = (S, C) => {
     const list = S.split("");
     let counter = new Array(list.length);
-    for(let i=0;i<list.length;i++){
-        if(list[i] === C){
-            for(let j=0;j<list.length;j++){
-               counter[j] = Math.abs(i-j) > counter[j] ? counter[j] : Math.abs(i-j);
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] === C) {
+            for (let j = 0; j < list.length; j++) {
+                counter[j] = Math.abs(i - j) > counter[j] ? counter[j] : Math.abs(i - j);
             }
         }
     }
@@ -940,20 +941,20 @@ let leetcode821 = (S, C) => {
 let leetcode824 = S => {
     let list = S.split(" ");
     let ans = [];
-    list.forEach((e,i) => {
-        if(!(e[0].toLowerCase()==="a" || e[0].toLowerCase()==="e" || e[0].toLowerCase()==="i" || e[0].toLowerCase()==="o" || e[0].toLowerCase()==="u")){
+    list.forEach((e, i) => {
+        if (!(e[0].toLowerCase() === "a" || e[0].toLowerCase() === "e" || e[0].toLowerCase() === "i" || e[0].toLowerCase() === "o" || e[0].toLowerCase() === "u")) {
             const tmp = e.split("");
             let temp = tmp.shift();
             tmp.push(temp);
             let name = tmp.join("") + "ma"
-            for(let j=0;j<i+1;j++){
+            for (let j = 0; j < i + 1; j++) {
                 name += "a";
             }
             ans[i] = name;
         }
-        else{
+        else {
             let name = e + "ma"
-            for(let j=0;j<i+1;j++){
+            for (let j = 0; j < i + 1; j++) {
                 name += "a";
             }
             ans[i] = name;
@@ -977,8 +978,8 @@ let leetcode829 = N => {
 let leetcode832 = A => {
     A.forEach(e => {
         e.reverse();
-        for(let i=0;i<e.length;i++){
-            e[i] = e[i]===0 ? 1 : 0;
+        for (let i = 0; i < e.length; i++) {
+            e[i] = e[i] === 0 ? 1 : 0;
         }
     })
     return A;
@@ -1011,12 +1012,12 @@ let leetcode888 = (A, B) => {
 }
 
 ///以解決
-let leetcode890 = (words,pattern) => {
+let leetcode890 = (words, pattern) => {
     const ans = [];
     const newpattern = leetcode890Decoder(pattern.split(""));
     words.forEach(e => {
         const temp = leetcode890Decoder(e.split(""));
-        if(JSON.stringify(temp)===JSON.stringify(newpattern)){
+        if (JSON.stringify(temp) === JSON.stringify(newpattern)) {
             ans.push(e);
         }
     })
@@ -1027,17 +1028,17 @@ let leetcode890Decoder = array => {
     const newarray = [];
     const temparray = [];
     let temp = 0;
-    while(array.length != 0){
+    while (array.length != 0) {
         let alpha = array.shift();
-        if(temparray.indexOf(alpha)!=-1){
-            temparray.forEach((element,index) => {
-                if(element===alpha){
+        if (temparray.indexOf(alpha) != -1) {
+            temparray.forEach((element, index) => {
+                if (element === alpha) {
                     newarray.push(newarray[index]);
                     temparray.push(alpha);
                 }
             })
         }
-        else{
+        else {
             newarray.push(temp);
             temp++;
             temparray.push(alpha);
@@ -1050,10 +1051,10 @@ let leetcode890Decoder = array => {
 let leetcode905 = A => {
     const ans = [];
     A.forEach(e => {
-        if(e%2===0) ans.push(e)
+        if (e % 2 === 0) ans.push(e)
     })
     A.forEach(e => {
-        if(e%2===1) ans.push(e)
+        if (e % 2 === 1) ans.push(e)
     })
     return ans;
 }
@@ -1063,18 +1064,18 @@ let leetcode917 = S => {
     let ans = [];
     let others = {};
     let alpha = "";
-    for(let i=0;i<S.length;i++){
-        if((S[i].charCodeAt(0) > 64 && S[i].charCodeAt(0) < 91) || (S[i].charCodeAt(0) > 96 && S[i].charCodeAt(0) < 123)){
+    for (let i = 0; i < S.length; i++) {
+        if ((S[i].charCodeAt(0) > 64 && S[i].charCodeAt(0) < 91) || (S[i].charCodeAt(0) > 96 && S[i].charCodeAt(0) < 123)) {
             alpha += S[i];
         }
-        else{
+        else {
             others[i] = S[i];
         }
     }
     ans = alpha.split("");
     ans.reverse();
     Object.keys(others).forEach(e => {
-        ans.splice(e,0,others[e]);
+        ans.splice(e, 0, others[e]);
     })
     return ans.join("");
 }
@@ -1163,10 +1164,10 @@ let numsSameConsecDiffImpl = (n, k, res, acc) => {
 ///以解決
 let leetcode973 = (points, K) => {
     const ans = [];
-    points.sort((a,b) => {
-        return -(Math.pow(a[0],2) + Math.pow(a[1],2) - Math.pow(b[0],2) - Math.pow(b[1],2))
+    points.sort((a, b) => {
+        return -(Math.pow(a[0], 2) + Math.pow(a[1], 2) - Math.pow(b[0], 2) - Math.pow(b[1], 2))
     })
-    for(let i=0;i<K;i++){
+    for (let i = 0; i < K; i++) {
         ans.push(points.pop())
     }
     return ans;
