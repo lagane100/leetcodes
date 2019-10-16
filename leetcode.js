@@ -1,3 +1,10 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
 let leetcode7 = x => {
     let out = 0;
     let max_range = Math.pow(2, 31) - 1;
@@ -438,7 +445,7 @@ let leetcode407 = heightMap => {
         }
     }
     return tempHeightMap; */
-console.log(leetcode407([[1, 4, 3, 1, 3, 2], [3, 2, 1, 3, 2, 4], [2, 3, 3, 2, 3, 1]]));
+//console.log(leetcode407([[1, 4, 3, 1, 3, 2], [3, 2, 1, 3, 2, 4], [2, 3, 3, 2, 3, 1]]));
 ///以解決
 let leetcode412 = n => {
     const ans = [];
@@ -1172,3 +1179,19 @@ let leetcode973 = (points, K) => {
     }
     return ans;
 }
+
+///質數判斷
+let isPrime = number => {
+    for(var i=2;i<Math.sqrt(number);i++){
+        if(number%i === 0){
+            return false
+        }
+    }
+    return true
+}
+
+rl.on('line', (input) =>{
+    console.log(`Recieved: ${input}`)
+    rl.close()
+})
+//console.log(isPrime(3572))
