@@ -134,7 +134,7 @@ let leetcode66 = digits => {
 
 ///待解決
 let leetcode72 = (word1, word2) => {
-
+    
 }
 
 ///以解決
@@ -151,12 +151,12 @@ let leetcode76 = (s, t) => {
     let minLen = Infinity;
 
     while (r < s.length) {
-        if (map[s[r++]]-- > 0) count--;
+        if (map[s[r++]]-- > 0) count--
 
         while (count === 0) {   // valid
             if (r - l < minLen) {
-                minLen = r - l;
-                start = l;
+                minLen = r - l
+                start = l
             }
 
             if (map[s[l++]]++ === 0) count++; // make it invalid
